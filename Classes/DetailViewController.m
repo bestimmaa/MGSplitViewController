@@ -12,7 +12,7 @@
 
 @interface DetailViewController ()
 
-@property (nonatomic, strong) UIPopoverController *popoverController;
+@property (nonatomic, retain) UIPopoverController *popoverController;
 - (void)configureView;
 
 @end
@@ -167,8 +167,6 @@
 {
 	[self configureView];
 }
-
-
 
 
 @end

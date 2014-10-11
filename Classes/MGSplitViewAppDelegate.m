@@ -20,7 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Add the split view controller's view to the window and display.
-    [window setRootViewController:splitViewController];
+    [window addSubview:splitViewController.view];
     [window makeKeyAndVisible];
 	
 	[rootViewController performSelector:@selector(selectFirstRow) withObject:nil afterDelay:0];
@@ -30,12 +30,10 @@
 		splitViewController.splitWidth = 15.0; // make it wide enough to actually drag!
 		splitViewController.allowsDraggingDivider = YES;
 	}
-	
+
+    window.rootViewController = self.splitViewController;
+
     return YES;
 }
 
-
-
-
 @end
-

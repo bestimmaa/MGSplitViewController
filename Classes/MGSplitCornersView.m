@@ -9,9 +9,6 @@
 #import "MGSplitCornersView.h"
 
 
-double deg2Rad(double degrees);
-double rad2Deg(double radians);
-
 @implementation MGSplitCornersView
 
 
@@ -37,7 +34,6 @@ double rad2Deg(double radians);
 - (void)dealloc
 {
 	self.cornerBackgroundColor = nil;
-	
 }
 
 
@@ -45,17 +41,10 @@ double rad2Deg(double radians);
 #pragma mark Geometry helpers
 
 
-double deg2Rad(double degrees)
+static double deg2Rad(double degrees)
 {
-	// Converts degrees to radians.
-	return degrees * (M_PI / 180.0);
-}
-
-
-double rad2Deg(double radians)
-{
-	// Converts radians to degrees.
-	return radians * (180 / M_PI);
+    // Converts degrees to radians.
+    return degrees * (M_PI / 180.0);
 }
 
 
@@ -67,10 +56,6 @@ double rad2Deg(double radians)
 {
 	// Draw two appropriate corners, with cornerBackgroundColor behind them.
 	if (cornerRadius > 0) {
-		if (NO) { // just for debugging.
-			[[UIColor redColor] set];
-			UIRectFill(self.bounds);
-		}
 		
 		float maxX = CGRectGetMaxX(self.bounds);
 		float maxY = CGRectGetMaxY(self.bounds);
@@ -80,7 +65,7 @@ double rad2Deg(double radians)
 			case MGCornersPositionLeadingVertical: // top of screen for a left/right split
 				[path moveToPoint:pt];
 				pt.y += cornerRadius;
-				[path appendPath:[UIBezierPath bezierPathWithArcCenter:pt radius:cornerRadius startAngle:deg2Rad(90) endAngle:0 clockwise:YES]];
+				[path appendPath:[UIBezierPath bezierPathWithArcCenter:pt radius:cornerRadius startAngle:(float)deg2Rad(90) endAngle:0 clockwise:YES]];
 				pt.x += cornerRadius;
 				pt.y -= cornerRadius;
 				[path addLineToPoint:pt];
@@ -93,7 +78,7 @@ double rad2Deg(double radians)
 				pt.y = maxY;
 				[path addLineToPoint:pt];
 				pt.x += cornerRadius;
-				[path appendPath:[UIBezierPath bezierPathWithArcCenter:pt radius:cornerRadius startAngle:deg2Rad(180) endAngle:deg2Rad(90) clockwise:YES]];
+				[path appendPath:[UIBezierPath bezierPathWithArcCenter:pt radius:cornerRadius startAngle:(float)deg2Rad(180) endAngle:(float)deg2Rad(90) clockwise:YES]];
 				pt.y -= cornerRadius;
 				[path addLineToPoint:pt];
 				pt.x -= cornerRadius;
@@ -106,7 +91,7 @@ double rad2Deg(double radians)
 				pt.y = maxY;
 				[path moveToPoint:pt];
 				pt.y -= cornerRadius;
-				[path appendPath:[UIBezierPath bezierPathWithArcCenter:pt radius:cornerRadius startAngle:deg2Rad(270) endAngle:deg2Rad(360) clockwise:NO]];
+				[path appendPath:[UIBezierPath bezierPathWithArcCenter:pt radius:cornerRadius startAngle:(float)deg2Rad(270) endAngle:(float)deg2Rad(360) clockwise:NO]];
 				pt.x += cornerRadius;
 				pt.y += cornerRadius;
 				[path addLineToPoint:pt];
@@ -120,7 +105,7 @@ double rad2Deg(double radians)
 				pt.y -= cornerRadius;
 				[path addLineToPoint:pt];
 				pt.x += cornerRadius;
-				[path appendPath:[UIBezierPath bezierPathWithArcCenter:pt radius:cornerRadius startAngle:deg2Rad(180) endAngle:deg2Rad(270) clockwise:NO]];
+				[path appendPath:[UIBezierPath bezierPathWithArcCenter:pt radius:cornerRadius startAngle:(float)deg2Rad(180) endAngle:(float)deg2Rad(270) clockwise:NO]];
 				pt.y += cornerRadius;
 				[path addLineToPoint:pt];
 				pt.x -= cornerRadius;
@@ -136,7 +121,7 @@ double rad2Deg(double radians)
 				pt.y -= cornerRadius;
 				[path addLineToPoint:pt];
 				pt.x += cornerRadius;
-				[path appendPath:[UIBezierPath bezierPathWithArcCenter:pt radius:cornerRadius startAngle:deg2Rad(180) endAngle:deg2Rad(270) clockwise:NO]];
+				[path appendPath:[UIBezierPath bezierPathWithArcCenter:pt radius:cornerRadius startAngle:(float)deg2Rad(180) endAngle:(float)deg2Rad(270) clockwise:NO]];
 				pt.y += cornerRadius;
 				[path addLineToPoint:pt];
 				pt.x -= cornerRadius;
@@ -149,7 +134,7 @@ double rad2Deg(double radians)
 				pt.y = maxY;
 				[path addLineToPoint:pt];
 				pt.x += cornerRadius;
-				[path appendPath:[UIBezierPath bezierPathWithArcCenter:pt radius:cornerRadius startAngle:deg2Rad(180) endAngle:deg2Rad(90) clockwise:YES]];
+				[path appendPath:[UIBezierPath bezierPathWithArcCenter:pt radius:cornerRadius startAngle:(float)deg2Rad(180) endAngle:(float)deg2Rad(90) clockwise:YES]];
 				pt.y -= cornerRadius;
 				[path addLineToPoint:pt];
 				pt.x -= cornerRadius;
@@ -162,7 +147,7 @@ double rad2Deg(double radians)
 				pt.y = cornerRadius;
 				[path moveToPoint:pt];
 				pt.y -= cornerRadius;
-				[path appendPath:[UIBezierPath bezierPathWithArcCenter:pt radius:cornerRadius startAngle:deg2Rad(270) endAngle:deg2Rad(360) clockwise:NO]];
+				[path appendPath:[UIBezierPath bezierPathWithArcCenter:pt radius:cornerRadius startAngle:(float)deg2Rad(270) endAngle:(float)deg2Rad(360) clockwise:NO]];
 				pt.x += cornerRadius;
 				pt.y += cornerRadius;
 				[path addLineToPoint:pt];
@@ -173,7 +158,7 @@ double rad2Deg(double radians)
 				pt.y = maxY - cornerRadius;
 				[path moveToPoint:pt];
 				pt.y += cornerRadius;
-				[path appendPath:[UIBezierPath bezierPathWithArcCenter:pt radius:cornerRadius startAngle:deg2Rad(90) endAngle:0 clockwise:YES]];
+				[path appendPath:[UIBezierPath bezierPathWithArcCenter:pt radius:cornerRadius startAngle:(float)deg2Rad(90) endAngle:0 clockwise:YES]];
 				pt.x += cornerRadius;
 				pt.y -= cornerRadius;
 				[path addLineToPoint:pt];
