@@ -1,3 +1,5 @@
+[This fork includes a number of bugfixes, ARC and the fix for the status bar issue in iOS7. A podspec file is included. To use a custom fork like this with cocoapods, add the path parameter to the podfile of your project and point to a local clone of the repository.]
+
 MGSplitViewController
 =====================
 
