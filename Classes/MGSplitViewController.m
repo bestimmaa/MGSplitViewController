@@ -998,7 +998,8 @@
 		if ([_viewControllers objectAtIndex:0] == newMaster) {
 			changed = NO;
 		} else {
-			[_viewControllers replaceObjectAtIndex:0 withObject:newMaster];
+            [[[_viewControllers objectAtIndex:1] view] removeFromSuperview];
+            [_viewControllers replaceObjectAtIndex:0 withObject:newMaster];
 		}
 		
 	} else {
@@ -1036,7 +1037,8 @@
 		if ([_viewControllers objectAtIndex:1] == detail) {
 			changed = NO;
 		} else {
-			[_viewControllers replaceObjectAtIndex:1 withObject:detail];
+            [[[_viewControllers objectAtIndex:1] view] removeFromSuperview];
+            [_viewControllers replaceObjectAtIndex:1 withObject:detail];
 		}
 		
 	} else {
