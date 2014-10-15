@@ -1,4 +1,4 @@
-*This fork is includes bugfixes and compatibility with iOS version 8.0*
+*This fork is includes bugfixes and compatibility with iOS 8.0*
 
 MGSplitViewController
 =====================
