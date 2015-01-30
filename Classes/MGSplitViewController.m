@@ -1031,13 +1031,14 @@
 		_viewControllers = [[NSMutableArray alloc] initWithCapacity:2];
 		[_viewControllers addObject:[NSNull null]];
 	}
-	
 	BOOL changed = YES;
 	if ([_viewControllers count] > 1) {
 		if ([_viewControllers objectAtIndex:1] == detail) {
 			changed = NO;
-		} else {
-            [[[_viewControllers objectAtIndex:1] view] removeFromSuperview];
+		}
+        else {
+            id vc = [_viewControllers objectAtIndex:1];
+            if([vc isKindOfClass:[UIViewController class]])[[vc view] removeFromSuperview];
             [_viewControllers replaceObjectAtIndex:1 withObject:detail];
 		}
 		
